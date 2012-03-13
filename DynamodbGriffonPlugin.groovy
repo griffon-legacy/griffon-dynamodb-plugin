@@ -46,9 +46,9 @@ class DynamodbGriffonPlugin {
             email: 'aalmiray@yahoo.com'
         ]
     ]
-    String title = 'Dynamodb support'
+    String title = 'DynamoDB support'
     String description = '''
-The Dynamodb plugin enables lightweight access to [Amazon's Dynamodb][1] databases.
+The Dynamodb plugin enables lightweight access to [Amazon's DynamoDB][1] databases.
 This plugin does NOT provide domain classes nor dynamic finders like GORM does.
 
 Usage
