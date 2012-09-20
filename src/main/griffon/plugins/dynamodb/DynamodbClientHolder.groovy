@@ -34,7 +34,7 @@ class DynamodbClientHolder implements DynamodbProvider {
     private static final Logger LOG = LoggerFactory.getLogger(DynamodbClientHolder)
     private static final Object[] LOCK = new Object[0]
     private final Map<String, AmazonDynamoDBClient> clients = [:]
-  
+
     String[] getClientNames() {
         List<String> clientNames = new ArrayList().addAll(clients.keySet())
         clientNames.toArray(new String[clientNames.size()])
@@ -47,7 +47,7 @@ class DynamodbClientHolder implements DynamodbProvider {
 
     void setClient(String clientName = 'default', AmazonDynamoDBClient client) {
         if(isBlank(clientName)) clientName = 'default'
-        storeClient(clientName, client)       
+        storeClient(clientName, client)
     }
 
     Object withDynamodb(String clientName = 'default', Closure closure) {
@@ -70,7 +70,7 @@ class DynamodbClientHolder implements DynamodbProvider {
     
     void disconnectClient(String clientName) {
         if(isBlank(clientName)) clientName = 'default'
-        storeClient(clientName, null)        
+        storeClient(clientName, null)
     }
 
     private AmazonDynamoDBClient fetchClient(String clientName) {

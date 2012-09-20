@@ -7,11 +7,11 @@ griffon.project.dependency.resolution = {
         mavenRepo 'http://repository.sonatype.org/content/groups/public'
     }
     dependencies {
-        compile('com.amazonaws:aws-java-sdk:1.3.4',
+        compile('com.amazonaws:aws-java-sdk:1.3.17',
                 'org.apache.httpcomponents:httpcore:4.1.3',
                 'org.apache.httpcomponents:httpcomponents-client:4.1.3',
                 'commons-codec:commons-codec:1.6') {
-            excludes 'commons-logging'        
+            excludes 'commons-logging'
         }
     }
 }

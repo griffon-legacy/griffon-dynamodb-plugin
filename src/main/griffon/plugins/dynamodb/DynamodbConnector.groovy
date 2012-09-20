@@ -25,6 +25,7 @@ import griffon.core.GriffonApplication
 import griffon.util.Environment
 import griffon.util.Metadata
 import griffon.util.CallableWithArgs
+import griffon.util.ConfigUtils
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -49,8 +50,7 @@ final class DynamodbConnector implements DynamodbProvider {
     // ======================================================
 
     ConfigObject createConfig(GriffonApplication app) {
-        def clientClass = app.class.classLoader.loadClass('DynamodbConfig')
-        new ConfigSlurper(Environment.current.name).parse(clientClass)
+        ConfigUtils.loadConfigWithI18n('DynamodbConfig')
     }
 
     private ConfigObject narrowConfig(ConfigObject config, String clientName) {
@@ -97,13 +97,13 @@ final class DynamodbConnector implements DynamodbProvider {
     private void stopDynamodb(ConfigObject config, AmazonDynamoDBClient client) {
         // empty ??
     }
-    
+
     private createCredentials(ConfigObject config, String clientName) {
         if(config.credentialsProvider && config.credentialsProvider instanceof Class) return config.credentialsProvider.newInstance()
         if(config.credentials) return new DynamodbCredentials(config.credentials.accessKey, config.credentials.secretKey)
         throw new IllegalArgumentException("Invalid credentials configuration for client $clientName")
     }
-    
+
     private static class DynamodbCredentials implements AWSCredentials {
         private final String accessKey
         private final String secretKey

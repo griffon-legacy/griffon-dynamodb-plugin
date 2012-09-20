@@ -37,7 +37,7 @@ class DynamodbGriffonAddon {
         }
     }
 
-    def events = [
+    Map events = [
         ShutdownStart: { app ->
             ConfigObject config = DynamodbConnector.instance.createConfig(app)
             DynamodbConnector.instance.disconnect(app, config)

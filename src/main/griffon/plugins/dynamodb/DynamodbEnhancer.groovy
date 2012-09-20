@@ -27,7 +27,7 @@ final class DynamodbEnhancer {
     private static final Logger LOG = LoggerFactory.getLogger(DynamodbEnhancer)
 
     private DynamodbEnhancer() {}
-    
+
     static void enhance(MetaClass mc, DynamodbProvider provider = DynamodbClientHolder.instance) {
         if(LOG.debugEnabled) LOG.debug("Enhancing $mc with $provider")
         mc.withDynamodb = {Closure closure ->
